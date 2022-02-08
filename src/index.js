@@ -1,32 +1,37 @@
 console.log('777');
 import './css/styles.css';
 import './sass/main.scss';
+import Notiflix from 'notiflix';
 import { fetchCountries } from './js/fetchCountries';
 
-let dateField= document.querySelector('#search-box');// console.log(dateField);
+// import getRefs from '.js/get-refs';
 
-dateField.addEventListener('input',onFieldInput);
+const refs = getRefs();
 
-function onFieldInput(){
-    console.log(`dateField.value ${dateField.value}`);
+refs.dateField.addEventListener('input', onFieldInput);
+
+function onFieldInput() {
+  let trimedField = dateField.value.trim();
+  console.log(`dateField.value ${trimedField}`);
+
+  fetchCountries(trimedField)
+    .then(renderCountries)
+    .catch(onFetchError)
+    .finally(() => console.log(`finalize it`));
+
+  // API.fetchPokemon(searchQuery)
+  // .then(renderPokemonCard)
+  // .catch(onFetchError)
+  // .finally(() => form.reset());
 }
 
 const DEBOUNCE_DELAY = 300;
 
-fetchCountries(22);
-// name.official - полное имя страны
-// capital - столица
-// population - население
-// flags.svg - ссылка на изображение флага
-// languages 
+function renderCountries(countries) {
+  console.log(`renderCountries ${countries}`);
+}
 
-fetch("https://restcountries.com/v3.1/name/ukraine?fields=name,capital,population,flags,languages")
-  .then(response => {
-    // Response handling
-  })
-  .then(data => {
-    // Data handling
-  })
-  .catch(error => {
-    // Error handling
-  });
+function onFetchError(error) {
+  Notiflix.Notify.info(`Too many matches found. Please enter a more specific name.`);
+  Notiflix.Notify.failure(`❌ Oops, there is no country with that name`);
+}
