@@ -5,6 +5,6 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./../images/demo.jpg":[["demo.090c7c6d.jpg","nKR3"],"nKR3"]}],"irxn":[function(require,module,exports) {
 "use strict";function e(e){console.log(" inside function fetchCountries ")}Object.defineProperty(exports,"__esModule",{value:!0}),exports.fetchCountries=e;
 },{}],"Focm":[function(require,module,exports) {
-"use strict";require("./css/styles.css"),require("./sass/main.scss");var s=require("./js/fetchCountries");console.log("777");const e=300;(0,s.fetchCountries)(22);
+"use strict";require("./css/styles.css"),require("./sass/main.scss");var e=require("./js/fetchCountries");console.log("777");let s=document.querySelector("#search-box");function t(){console.log(`dateField.value ${s.value}`)}s.addEventListener("input",t);const n=300;(0,e.fetchCountries)(22),fetch("https://restcountries.com/v3.1/name/ukraine?fields=name,capital,population,flags,languages").then(e=>{}).then(e=>{}).catch(e=>{});
 },{"./css/styles.css":"krre","./sass/main.scss":"clu1","./js/fetchCountries":"irxn"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-10/src.e6c00c7f.js.map
+//# sourceMappingURL=/goit-js-hw-10/src.fe03bf0e.js.map
