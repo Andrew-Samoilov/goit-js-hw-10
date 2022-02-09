@@ -9,7 +9,7 @@ import countryCardTpl from './templates/country-card.hbs';
 import countriesCardTpl from './templates/countries-card.hbs';
 const refs = getRefs();
 
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 1000;
 refs.dateField.addEventListener('input', debounce(onFieldInput, DEBOUNCE_DELAY));
 
 function onFieldInput() {
@@ -40,13 +40,19 @@ function renderCountries(countries) {
     // }
 
     if (countriesCount === 1) {
+        refs.countryList.innerHTML = '';
         const markup = countryCardTpl(countries);
-        // refs.countryList.remove();
         refs.countryInfo.innerHTML = markup;
     } else {
-        const markup = countriesCardTpl(countries);
-        refs.countryList.innerHTML = markup;
-        // refs.countryInfo.remove();
+        refs.countryInfo.innerHTML = '';
+        const markup =[];
+        for (const c of countries) {
+           
+            markup.push(countriesCardTpl(c));
+            console.log(`countriesCardTpl(c)`, countriesCardTpl(c));
+        }
+        // const markup = countriesCardTpl(countries);
+        refs.countryList.innerHTML = markup.join('');
     }
 
     console.log(`renderCountries`, countries[0].name.official);
