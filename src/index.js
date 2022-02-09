@@ -18,8 +18,8 @@ function onFieldInput() {
 
     fetchCountries(trimedField)
         .then(renderCountries)
-        .catch(onFetchError)
-        .finally(() => Notiflix.Notify.info(`finalize it`));
+        .catch(onFetchError);
+        //  .finally(() => Notiflix.Notify.info(`finalize it`));
 }
 
 function renderCountries(countries) {
