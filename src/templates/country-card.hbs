@@ -6,13 +6,9 @@
   <div class="card-body">
     <p><b>Capital:</b> {{[0].capital}}</p>
     <p><b>Population:</b> {{[0].population}}</p>
-    <p><b>Languages:</b> {{...[0].languages}}</p>
-    <p><b>Languages</b></p>
-    <ul class="list-group"></ul>
-    {{#each [0].languages}}
-      <li class="list-group-item">{{[0].languages.[...]}}</li>
+    <p><b>Languages:</b>{{#each [0].languages}}
+      {{this}}{{#if @last}}{{else}}, {{/if}}
     {{/each}}
-    </ul>
+  </p>
   </div>
 </div>
-{{!-- name,capital,population,flags,languages --}}
