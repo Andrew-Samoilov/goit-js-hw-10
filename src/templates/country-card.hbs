@@ -6,9 +6,6 @@
   <div class="card-body">
     <p><b>Capital:</b> {{[0].capital}}</p>
     <p><b>Population:</b> {{[0].population}}</p>
-    <p><b>Languages:</b>{{#each [0].languages}}
-      {{this}}{{#if @last}}{{else}}, {{/if}}
-    {{/each}}
-  </p>
+    <p><b>Languages:</b>{{#each [0].languages}}{{this}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
   </div>
 </div>
